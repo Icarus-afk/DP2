@@ -76,7 +76,6 @@ class Book_event(models.Model):
     name = models.CharField(max_length = 100)
     mobile = models.CharField(max_length = 14)
     email = models.EmailField()
-    location = models.CharField(max_length = 100)
     people = models.IntegerField()
     date = models.DateField()
     event = models.CharField(max_length = 100)
