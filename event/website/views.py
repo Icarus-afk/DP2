@@ -65,3 +65,9 @@ def book_event(request):
     
     return render(request, "book.html")
 
+
+def about_us(request):
+    return render(request, "aboutus.html")
+
+
+#register, user data, login, password_change, cart, logout
