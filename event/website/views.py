@@ -69,5 +69,30 @@ def book_event(request):
 def about_us(request):
     return render(request, "aboutus.html")
 
+def register(request):
+    if request.method = "POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1 == password2:
+            if User.objects.filter(username = username).exists():
+                message.info(request, "Username already exists")
+                return redirect("/register")
+            elif:
+                User.objects.filter(email = email).exists():
+                    message.info(request, "Email already used")
+                    return redirect('/register')
+            else:
+                user = User.objects.create_user(first_name = first_name, last_name = last_name, username = username, email = email, password = password)
+                user.save()
+                message.info(request, "Your account has been created successfully! Please log in")
+        else:
+            message.info(request, "Password did not match")
+            return redirect("/register")
+    else:
+        return render(request, "register.html")
 
-#register, user data, login, password_change, cart, logout
+#-register, user data, login, password_change, cart, logout
