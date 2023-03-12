@@ -7,7 +7,7 @@ class Family(models.Model):
     event_type = models.CharField(max_length = 300)
     desc = models.TextField()
     image = models.ImageField(upload_to = "family_images")
-    food = models.CharField(max_length = 200)
+    food = models.ForeignKey('website.Food', on_delete = models.CASCADE, default = "")
     decoration = models.CharField(max_length = 500)
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
 
@@ -21,7 +21,7 @@ class Charity(models.Model):
     event_type = models.CharField(max_length = 300)
     desc = models.TextField()
     image = models.ImageField(upload_to = "charity_images")
-    food = models.CharField(max_length = 200)
+    food = models.ForeignKey('website.Food', on_delete = models.CASCADE, default = "")
     decoration = models.CharField(max_length = 500)
     chief_guest = models.CharField(max_length = 100)
     sponsor = models.CharField(max_length = 100)
@@ -37,7 +37,7 @@ class Business(models.Model):
     event_type = models.CharField(max_length = 300)
     desc = models.TextField()
     image = models.ImageField(upload_to = 'business_image')
-    food = models.CharField(max_length = 200)
+    food = models.ForeignKey('website.Food', on_delete = models.CASCADE, default = "")
     chief_guest = models.CharField(max_length = 100)
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
     
@@ -51,12 +51,23 @@ class Culture(models.Model):
     event_type = models.CharField(max_length = 300)
     desc = models.TextField()
     image = models.ImageField(upload_to = 'culture_image')
-    food = models.CharField(max_length = 200)
+    food = models.ForeignKey('website.Food', on_delete = models.CASCADE, default = "")
     chief_guest = models.CharField(max_length = 100)
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
     
     def __str__(self):
         return self.name
+    
+class Food(models.Model):
+    package = models.CharField(max_length = 200)
+    item1 = models.CharField(max_length = 50)
+    item2 = models.CharField(max_length = 50)
+    item3 = models.CharField(max_length = 50)
+    item4 = models.CharField(max_length = 50)
+    pack_price = models.IntegerField()
+    
+    def __str__(self):
+        return self.package
     
     
     
