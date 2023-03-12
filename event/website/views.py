@@ -94,5 +94,9 @@ def register(request):
             return redirect("/register")
     else:
         return render(request, "register.html")
+    
+def user_date(request):
+    data = User.objects.filter(User = request.user)
+    return render(request, "user.html", {u : data})
 
-#-register, user data, login, password_change, cart, logout
+#, user data, login, password_change, cart, logout
