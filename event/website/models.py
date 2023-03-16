@@ -12,7 +12,7 @@ class Family(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
 
     def __str__(self):
-        return self.name
+        return self.event_type
     
     
  #Charity 
@@ -28,7 +28,7 @@ class Charity(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
 
     def __str__(self):
-        return self.name
+        return self.namevent_type
     
     
 #Business
@@ -42,7 +42,7 @@ class Business(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
     
     def __str__(self):
-        return self.name
+        return self.event_type
     
     
 #Culture
@@ -56,7 +56,7 @@ class Culture(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
     
     def __str__(self):
-        return self.name
+        return self.event_type
     
 class Food(models.Model):
     package = models.CharField(max_length = 200)
@@ -90,7 +90,7 @@ class Book_event(models.Model):
     people = models.IntegerField()
     date = models.DateField()
     event = models.CharField(max_length = 100)
-    food = models.CharField(max_length = 100)
+    food =  models.ForeignKey('website.Food', on_delete = models.CASCADE, default = "")
     address = models.CharField(max_length = 500)
     venue = models.ForeignKey(Venue, on_delete = models.CASCADE, default = " ")
     message = models.TextField()
