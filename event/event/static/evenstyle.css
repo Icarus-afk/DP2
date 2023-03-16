@@ -1,0 +1,257 @@
+/* -------------home------------ */
+body{
+    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    }
+
+#home-body{
+    /* background-image: url("https://source.unsplash.com/WLUHO9A_xik/1600x900"); */
+    background-attachment: fixed;
+    }
+
+.header{
+    background-image: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.8) 100%),url("https://source.unsplash.com/user/erondu/1600x900");
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    padding: 100px 100px;
+    background-position:left;
+    } 
+
+header .nav-link-active a{
+    text-decoration: none;
+    color: #fff;
+    }
+
+#main-heading{
+    font-size:70;
+    font-weight:bold;
+    color:white;
+    padding:10px;
+    }
+
+.head{
+    background-image: linear-gradient(#fe8c00,#f83600);
+    color:white;
+    padding:10px
+    }
+
+#home-button{
+    background-image: linear-gradient(#fe8c00,#f83600);
+    padding:3px;
+    border:none;
+    border-radius:9px;
+    color:white
+}
+
+.family-home{
+    background-image: linear-gradient(#636363,#a2ab58);
+    background-attachment: fixed;
+    }
+
+.cultural-home{
+    background-image: linear-gradient(#dd3e54,#6be585);
+    padding:10px;
+    background-image: linear-gradient(#1f4037,#99f2c8);
+    padding:10px
+    }
+
+.business-home{
+    background-image:linear-gradient(#BBD2C5,#536976);
+    padding:10px;
+    }
+
+.charity-home{
+    background-image: linear-gradient(#9796f0,#fbc7d4);
+    padding:10px
+    }
+
+.contact{
+    background-color:#162b4d;
+    color:white;
+    padding:15px;
+    } 
+
+#contactinput{
+    width:60%;
+    border-radius:2px;
+    border:none;
+    border-bottom:2px solid white;
+    background-color:#162b4d;
+    padding:10px;
+    color:white;
+    }
+
+#contact-button{
+    background-image: linear-gradient(#24a0ed, #24a0ed);
+    padding: 5px 15px;
+    border:none;
+    border-radius:9px;
+    color:white
+}
+
+footer{
+    background-image:linear-gradient(#FF4E50,#F9D423);
+    color:white;
+    padding: 15px;
+    }
+
+#font-id{
+    font-size:40px;
+    padding-right: 10px;
+}
+
+/* ------------------about us---------------- */
+.about-body{
+    background-size: cover;
+    background-attachment:fixed;
+    background-image:linear-gradient(#44a08d,#093637);
+    color:white;
+    overflow-x:hidden;
+    }
+
+.aboutus h4{
+    text-align: center;
+    margin-top: 20px;
+    }
+
+section .aboutus p{
+    text-align: center;
+    }
+
+#aboutus-photo{
+    width:100%;
+    height:50%;
+    border:solid;
+    border-radius:15px;
+}
+
+/* -------------book event------------------- */
+.book-body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,34,170,0.6867121848739496) 0%, rgba(0,212,255,1) 100%);
+    }
+
+/* ----------------contact us-------------------- */
+.contact-body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,34,170,0.6867121848739496) 0%, rgba(0,212,255,1) 100%);
+    }
+
+.card-map{
+    flex-basis:100%;
+}
+
+@media (max-width:640px){
+    .card-map{
+        flex-basis: 80%;
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+/* --------------user cart------------- */
+
+#cart-body{
+    background-image: linear-gradient(#0B486B,#f56217);
+    overflow-x:hidden;
+    font-family: 'Nunito', sans-serif;
+    }
+
+.cart-section{
+    margin-bottom: 120px;
+    }
+
+.card {
+    border: 0;
+    -webkit-transition: all .3s ease;
+    transition: all .3s ease;
+    letter-spacing: .5px;
+    border-radius: 8px;
+    -webkit-box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    box-shadow: 1px 5px 24px 0 rgba(68,102,242,.05);
+    }
+
+.card .card-body {
+    background-color: transparent;
+    }
+
+
+#des{
+    font-family: 'Nunito', sans-serif;
+    }
+
+.btn-primary, .btn-primary.disabled, .btn-primary:disabled {
+    background-color: #4466f2!important;
+    border-color: #4466f2!important;
+    }
+
+/* ------------------SignUp------------- */
+.register-body{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,34,170,0.6867121848739496) 0%, rgba(0,212,255,1) 100%);
+    background-size:cover;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    }
+
+#register-button{
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(61,34,170,0.6867121848739496) 0%, rgba(0,212,255,1) 100%);
+}
+
+#login-button{
+    background-image: linear-gradient(#fe8c00,#f83600);
+}
+
+#a-link{
+    text-decoration: none;
+}
+
+/* ----------------logIn-------------- */
+
+.login-body{
+    background-image: linear-gradient(#0B486B,#f56217);
+    background-size:cover;
+    background-attachment: fixed;
+    background-repeat:no-repeat;
+    }
+
+
+/* --------------------user details----------------- */
+#user-details{
+    overflow-x:hidden;
+}
+
+#user-header{
+    color: black;
+}
+
+table {
+    width: 100%;
+    }
+    
+td, th {
+    border: 1px solid black;
+    text-align: center;
+    }
+
+tr:nth-child(even) {
+    background-color: #dddddd;
+    }
+
+/* ------------------forgot password email send-------------- */
+
+#check-inbox{
+    margin-bottom: 45px;
+    }
+    
+/* -----------unknown------------- */
+
+    
+
+
+form button{
+    border-radius:10px;
+    margin-top:10px;
+    background-color:skyblue;
+    }
