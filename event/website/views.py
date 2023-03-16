@@ -111,3 +111,51 @@ def user_date(request):
     return render(request, "user.html", {'u': data})
 
 # ,, login, password_change, cart, logout
+def register(request):
+    if request.method == "POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1 == password2:
+            if User.objects.filter(username=username).exists():
+                messages.info(request, "Username already exists")
+                return redirect("/register")
+            elif User.objects.filter(email=email).exists():
+                messages.info(request, "Email already exists")
+            else:
+                user = User.objects.create_user(first_name = first_name, last_name = last_name, username = username, email = email, password=password1)
+                user.save()
+                messages.info(request, "Your account has been created succeessfully! Please login")
+                return redirect("/redirect")
+        else:
+            messages.info(request, "password didn't match")
+            return redirect("/register")  
+    else:
+        return render("/register")
+    
+    
+def login(request):
+    if  request.method == "GET":
+        pc = PasswordChangeForm(user = request.user)
+        return render(request, 'changepassword.html', {'context':pc})
+    elif request.method == "POST":
+        aa=PasswordChangeForm(user=request.user)
+        if aa.is_valid():
+            user = aa.save()
+            update_session_auth_hash(request, user)
+            messages.info(request, "Password changed successfully! Please Login")
+            return redirect('/login')
+        
+def usercart(request):
+    my_cart = Book_event.objects.filter(user = request.user)
+    return render(request, "user_cart.html", {'my_cart':my_cart})
+
+def aboutus(request):
+    return render(request, "aboutus.html")
+
+def logout(request):
+    auth.logout(request)
+    return redirect("/")
