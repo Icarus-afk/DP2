@@ -108,7 +108,3 @@ class Contact_us(models.Model):
     
     def __str__(self):
         return self.name 
-    
-    
-    
-    

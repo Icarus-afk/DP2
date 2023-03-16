@@ -1,0 +1,114 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<title>Event Management | Home</title>
+
+<body id="home-body">
+
+    {% for msg in messages %}
+    <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>{{msg}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+    {% endfor %}
+          
+    <div align="center">
+    <div class="header text-white">
+    <h1 id="main-heading">Organize Your Events With Us</h1>
+    <p>It takes as much energy to wish as it does to plan..</p><br><br>
+    <form>
+    <button type="submit" id="home-button"><a class="nav-link text-dark" href=" {% url 'bookevent' %}">BOOK EVENT</a></button>
+    </form>
+
+
+    </div>
+  </div>
+<section class="family-home">
+  <div class="container p-3">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="text-left" ><img id="family" src="/static/family.jpeg" width="350" height="200"></div>
+  </div>
+    <div class="col-md-8">
+      <h4>Family Event</h4>
+      <p>
+        The family. We were a strange little band of characters trudging through life sharing diseases and toothpaste, coveting one another's desserts, hiding shampoo, borrowing money, locking each other out of our rooms, inflicting pain and kissing to heal it in the same instant, loving, laughing, defending,<br> and trying to figure out the common thread that bound us all together.<br>
+        <a  href="{% url 'family' %}">More Details</a>
+      </p>
+      </div>
+      </div>
+    </div>
+</section>
+<section class="cultural-home">
+  <div class="container ">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="text-left" ><img id="cultural" src="/static/cultural.jpg" width="350" height="200"></div>
+  </div>
+    <div class="col-md-8">
+    <h4>Cultural Event</h4>
+      <p>
+        Culture is a way of coping with the world by defining it in detail.” by Malcolm Bradbury. “A nation's culture resides in the hearts and in the soul of its people” by Mahatma Gandhi. “We may have different religions, different languages, different colored skin, but we all belong to one human race.<br>
+        <a  href="{% url 'culture' %}">More Details</a>
+      </p>
+      </div>
+      </div>
+    </div>
+</section>
+
+<section class="business-home">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="text-left" ><img id="business" src="/static/business.jpg" width="350" height="200"></div>
+  </div>
+    <div class="col-md-8">
+      <h4>Business Event</h4>
+      <p>
+      Take inspiration from some of history’s greatest minds: from Henry Ford and Maya Angelou, to Charles Darwin and Leonardo Da Vinci (we’ve even thrown in some Steve Jobs and Confucius to make sure the list is well rounded). The quotes will inspire you.<br>
+      <a href="{% url 'business' %}">More Details</a>
+      </p>
+      
+      </div>
+      </div>
+    </div>
+</section>
+
+<section class="charity-home">
+  <div class="container">
+    <div class="row">
+    <div class="col-md-4">
+    <div class="text-left" ><img id="charity" src="/static/charity.jpg" width="350" height="200"></div>
+  </div>
+    <div class="col-md-8">
+      <h4>Charity Event</h4>
+      <p>
+      As I grew older it seemed that I was not making a big enough difference, particularly given my own incredible good fortune. I went from feeling content that things were going well, to realizing that I hadn’t even begun to scratch the surface of what needed to be done.<br>
+      <a href="{% url 'charity' %}">More Details</a>
+      </p>
+      </div>
+      </div>
+    </div>
+</section>
+<section class="contact">
+  <div class="container" align="center">
+    <div class="row">
+      <div class="col-sm-12">
+        <form method="POST">
+          {% csrf_token %}
+          <h4>Enquiry Form</h4>
+          <input type="text" name="name" id="contactinput" placeholder="Enter your name:">
+          <input  type="text" name="mobile" id="contactinput" placeholder="Enter mobile no:"><br>
+          <input type="email" name="email" id="contactinput" placeholder="Enter your email id:"><br>
+          <input type="text" name="message" id="contactinput" placeholder="Write your messages:"><br><br>
+          <button type="submit" id="contact-button" class="btn btn-light" >Send</button><br>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+{% endblock content %}

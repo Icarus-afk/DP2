@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<title>Event Management | Family Event</title>
+
+
+<body>
+    <header class="heading-ce p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-info text-center" ><h1>Family Event<hr></h1></div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class='col-sm-12'>
+            <section class="family-drop" >
+                <div class="container">
+                    <div class="jumboturon" >
+                        <div class="row" >
+                        {% for family in f %}
+                        <div class="col-md-12 p-6" >
+                            <div class="card-group " >
+                                <div class="card m-3 shadow-lg mb-5 bg-white  rounded" >
+                                    <h2 class="card-title text-center p-2">{{family.event_type}}</h2>
+                                    <img src="{{family.image.url}}"  class="card-img-top">
+                                <div class="card-body">
+                                    <p id="des">{{family.desc}}</p>
+                                    <p><h6><u>Food:</u></h6>{{family.food}}</p>
+                                    <p><h6><u>Decorations:</u></h6>{{family.decoration}}</p>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+{% endblock content %}

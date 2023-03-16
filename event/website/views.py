@@ -64,7 +64,7 @@ def book_event(request):
             messages.info(request, "Warning! Field missing!")
             return redirect("/bookevent")
         else:
-            book = Book_event(name=Name, mobile=Mobile, email=Email, people=People, date=Date, event=Event, food=Food, address=Address, message=Message, venue=Venue, message = Message)
+            book = Book_event(name=Name, mobile=Mobile, email=Email, people=People, date=Date, event=Event, food=Food, address=Address, venue=Venue, message = Message)
             book.user = request.user
             book.name = request.user
             book.save()
@@ -107,7 +107,7 @@ def register(request):
         return render(request, "register.html")
 
 
-def user_date(request):
+def user_data(request):
     data = User.objects.filter(User=request.user)
     return render(request, "user.html", {'u': data})
 
@@ -149,6 +149,20 @@ def login(request):
             update_session_auth_hash(request, user)
             messages.info(request, "Password changed successfully! Please Login")
             return redirect('/login')
+        
+        
+def change_password(request):
+    if request.method == "GET":
+        pc = PasswordChangeForm(user = request.user)
+        return render(request, 'changepassword.html', {'context': pc})
+    elif request.method == "POST":
+        aa = PasswordChangeForm(user = request.user,  data = request.POST)
+        if aa.is_valid():
+            user = aa.save()
+            update_session_auth_hash(request, user)
+            messages.info(request, "Password Changed Successfully! Login again")
+            return redirect("/login")
+
         
 def usercart(request):
     my_cart = Book_event.objects.filter(user = request.user)

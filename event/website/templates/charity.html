@@ -1,0 +1,44 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<title>Event Management | Charity Event</title>
+
+<body>
+    <header class="heading-ce p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-info text-center" ><h1>Charity Event<hr></h1></div>
+            </div>
+        </div>
+    </header>
+        
+    <main>    
+        <div class='col-sm-12'>
+            <section class="charity-drop">
+                <div class="container">
+                    <div class="row">
+                        {% for charity in c %}
+                        <div class="col-md-12 p-3">
+                            <div class="card-group">
+                                <div class="card p-3 m-3 shadow-lg p-3 mb-5 bg-white rounded">
+                                    <h2 class="card-title text-center">{{charity.event_type}}</h2>
+                                    <img src="{{charity.image.url}}"  class="card-img-top">
+                                    <div class="card-body">
+                                        <p>{{charity.desc}}</p>
+                                        <p><h6><u>Food:</u></h6>{{charity.food}}</p>
+                                        <p><h6><u>Decorations:</u></h6>{{charity.decoration}}</p>
+                                        <p><h6><u>Chief Guest:</u></h6>{{charity.chief_guest}}</p>
+                                        <p><h6><u>Sponsorship By:</u></h6>{{charity.sponsor}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+{% endblock content%}

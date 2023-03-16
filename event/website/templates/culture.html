@@ -1,0 +1,42 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<title>Event Management | Cultural Event</title>
+
+<body>
+    <header class="heading-ce p-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-info text-center" ><h1>Cultural Event<hr></h1></div>
+            </div>
+        </div>
+    </header>
+    
+    <main>
+        <div class='col-sm-12'>
+            <section class="culture-dop">
+                <div class="container ">
+                    <div class="row">
+                    {% for culture in cu %}
+                    <div class="col-md-12 p-6">
+                        <div class="card-group">
+                            <div class="card p-3 m-3 shadow-lg p-3 mb-5 bg-white rounded">
+                                <h2 class="card-title text-center text-dark">{{culture.event_type}}</h2>
+                                <img src="{{culture.image.url}}"  class="card-img-top">
+                            <div class="card-body">
+                                <p>{{culture.desc}}</p>
+                                <p><h6><u>Food:</u></h6>{{culture.food}}</p>
+                                <p><h6><u>Chief Guest:</u></h6>{{culture.chief_guest}}</p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+</body>
+{% endblock content%}
