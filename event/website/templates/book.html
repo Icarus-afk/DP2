@@ -32,9 +32,6 @@
             <input type="email" name="email" placeholder="Enter your email address" class="form-control">
           </div>
           <div class="form-group">
-            <input type="text" name="location" placeholder="Enter your complete address" class="form-control">
-          </div>
-          <div class="form-group">
             <input type="number" name="people" placeholder="Enter the number of guest" class="form-control">
           </div>
           <div class="form-group">
@@ -42,17 +39,24 @@
           </div>
           <div class="form-group">
             <input type="text" name="event" placeholder="Enter the type of event " class="form-control">
-          </div>
+          </div>          
           <div class="form-group">
-            <input type="text" name="food" placeholder="Enter the food categories" class="form-control">
+            <input type="text" name="address" placeholder="Enter your complete address" class="form-control">
           </div>
+          <select name="foods" id="dropdownfood" class="form-control">       
+            <option value="0">--Select Department--</option>     
+            {% for food in fd  %}
+            <option value="{{ food.id }}">{{ food.package }}</option>
+            {% endfor %}
+        </select>
           <div class="form-group">
-            <input type="text" name="address" placeholder="Enter the event location" class="form-control">
+            <input type="text" name="venue" placeholder="Enter the event venue" class="form-control">
           </div>
+           
           <div class="form-group">
             <input type="text" name="message" placeholder="Do you have any message?" class="form-control">
           </div>
-          <button type="submit" class=" btn btn-success form-control">BOOK EVENT</button>
+          <button type="submit" class=" btn btn-success form-control" value = "Submit">BOOK EVENT</button>
           </form>
         </div>
       </div>

@@ -1,5 +1,5 @@
 from django.shortcuts import redirect, render
-from .models import Family, Charity, Culture, Business, Venue, Contact_us, Book_event
+from .models import Family, Charity, Culture, Business, Venue, Contact_us, Book_event, Food
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
@@ -49,6 +49,7 @@ def venue(request):
 
 @login_required(login_url='login')
 def book_event(request):
+    fooddrop = Food.objects.all()
     if request.method == "POST":
         Name = request.POST['name']
         Mobile = request.POST['mobile']
@@ -57,23 +58,20 @@ def book_event(request):
         Date = request.POST['date']
         Event = request.POST['event']
         Address = request.POST['address']
-        Food = request.POST['food']
+        Foods = request.POST.get['fd']
         Venue = request.POST['venue']
         Message = request.POST['message']
-        if (Mobile and Email and Address and Name) == "":
-            messages.info(request, "Warning! Field missing!")
-            return redirect("/bookevent")
+        if (( Mobile and Email and Address)==""):
+            messages.info(request,'Warning field required')
+            return redirect('/bookevent')
         else:
-            book = Book_event(name=Name, mobile=Mobile, email=Email, people=People, date=Date, event=Event, food=Food, address=Address, venue=Venue, message = Message)
-            book.user = request.user
-            book.name = request.user
-            book.save()
-            messages.info(
-                request, "Thank you for your booking, The event has been booked successfully!")
-            return redirect("/")
-
-    return render(request, "book.html")
-
+            guest=Book_event(name=Name,mobile=Mobile,email=Email,venue=Venue,people=People,date=Date,event=Event,food=Foods,address=Address,message=Message)
+            guest.user=request.user
+            guest.name=request.user
+            guest.save()
+            messages.info(request, "Your Event is booked successfully! Thank you for booking an event with us!")
+            return redirect('/')
+    return render(request,'book.html', context = {'fd':fooddrop})
 
 def about_us(request):
     return render(request, "aboutus.html")

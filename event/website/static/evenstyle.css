@@ -30,7 +30,7 @@ header .nav-link-active a{
     }
 
 .head{
-    background-image: linear-gradient(#20002c,#cbb4d4);
+    background-image: #20002c;
     color:white;
     padding:10px
     }
