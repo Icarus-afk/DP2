@@ -58,7 +58,7 @@ def book_event(request):
         Date = request.POST['date']
         Event = request.POST['event']
         Address = request.POST['address']
-        Foods = request.POST.get['fd']
+        Foods = request.POST.get['foods']
         Venue = request.POST['venue']
         Message = request.POST['message']
         if (( Mobile and Email and Address)==""):
