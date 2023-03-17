@@ -23,22 +23,22 @@ def home(request):
 
 
 def family(request):
-    fam = Family.object.all()
+    fam = Family.objects.all()
     return render(request, 'family.html', {'f': fam})
 
 
 def charity(request):
-    chari = Charity.object.all()
+    chari = Charity.objects.all()
     return render(request, 'charity.html', {'c': chari})
 
 
 def business(request):
-    bus = Business.object.all()
+    bus = Business.objects.all()
     return render(request, 'business.html', {'b': bus})
 
 
 def culture(request):
-    cul = Culture.object.all()
+    cul = Culture.objects.all()
     return render(request, 'culture.html', {'cu': cul})
 
 
@@ -113,42 +113,47 @@ def user_data(request):
 
 # ,, login, password_change, cart, logout
 def register(request):
-    if request.method == "POST":
-        first_name = request.POST['first_name']
-        last_name = request.POST['last_name']
-        username = request.POST['username']
-        email = request.POST['email']
-        password1 = request.POST['password1']
-        password2 = request.POST['password2']
-        if password1 == password2:
+    if request.method=="POST":
+        first_name=request.POST['first_name']
+        last_name=request.POST['last_name']
+        username=request.POST['username']
+        email=request.POST['email']
+        password1=request.POST['password1']
+        password2=request.POST['password2']
+        if password1==password2:
             if User.objects.filter(username=username).exists():
-                messages.info(request, "Username already exists")
-                return redirect("/register")
+                messages.info(request, "Username already exist!")
+                return redirect('/register')
             elif User.objects.filter(email=email).exists():
-                messages.info(request, "Email already exists")
+                messages.info(request, "Email already exist!")
+                return redirect('/register')
             else:
-                user = User.objects.create_user(first_name = first_name, last_name = last_name, username = username, email = email, password=password1)
+                user=User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password1)
                 user.save()
-                messages.info(request, "Your account has been created succeessfully! Please login")
-                return redirect("/redirect")
+                messages.info(request, 'Your account has been created successfully! Please login')
+                return redirect('/login')
         else:
-            messages.info(request, "password didn't match")
-            return redirect("/register")  
+            messages.info(request, "Password didn't match")
+            return redirect('/register')
+        
     else:
-        return render("/register")
+
+        return render(request, 'register.html')
     
     
 def login(request):
-    if  request.method == "GET":
-        pc = PasswordChangeForm(user = request.user)
-        return render(request, 'changepassword.html', {'context':pc})
-    elif request.method == "POST":
-        aa=PasswordChangeForm(user=request.user)
-        if aa.is_valid():
-            user = aa.save()
-            update_session_auth_hash(request, user)
-            messages.info(request, "Password changed successfully! Please Login")
+    if request.method=="POST":
+        username=request.POST['username']
+        password=request.POST['password']
+        user=auth.authenticate(username=username, password=password)
+        if user is not None:
+            auth.login(request, user)
+            return redirect('/')
+        else:
+            messages.info(request, 'Invalid username/ password!')
             return redirect('/login')
+    else:
+        return render(request, 'login.html')
         
         
 def change_password(request):
@@ -165,8 +170,8 @@ def change_password(request):
 
         
 def usercart(request):
-    my_cart = Book_event.objects.filter(user = request.user)
-    return render(request, "user_cart.html", {'my_cart':my_cart})
+    my_cart=Book_event.objects.filter(user=request.user)
+    return render(request,'user_cart.html',{'my_cart':my_cart})
 
 def aboutus(request):
     return render(request, "aboutus.html")

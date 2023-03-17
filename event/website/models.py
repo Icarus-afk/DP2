@@ -94,6 +94,7 @@ class Book_event(models.Model):
     address = models.CharField(max_length = 500)
     venue = models.ForeignKey(Venue, on_delete = models.CASCADE, default = " ")
     message = models.TextField()
+    user=models.ForeignKey(User, on_delete=models.CASCADE, default='')
     
     def __str__(self):
         return self.name
