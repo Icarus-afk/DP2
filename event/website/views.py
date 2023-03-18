@@ -50,6 +50,7 @@ def venue(request):
 @login_required(login_url='login')
 def book_event(request):
     fooddrop = Food.objects.all()
+    venuedrop = Venue.objects.all()
     if request.method == "POST":
         Name = request.POST['name']
         Mobile = request.POST['mobile']
@@ -58,20 +59,30 @@ def book_event(request):
         Date = request.POST['date']
         Event = request.POST['event']
         Address = request.POST['address']
-        Foods = request.POST.get['foods']
-        Venue = request.POST['venue']
+        Foods = request.POST['foods']
+        food = Food.objects.get(pk=Foods)
+        venue_temp = request.POST['venue']
+        venuepk = Venue.objects.get(pk=venue_temp)
         Message = request.POST['message']
+        cpct = int(venuepk.capacity) 
+        input_cpct = int(People)
+        print("cpct")
         if (( Mobile and Email and Address)==""):
             messages.info(request,'Warning field required')
             return redirect('/bookevent')
+        elif (input_cpct > cpct):
+            messages.info(request, "warning! capcity exceeded!")
+            return redirect('/bookevent')
+            
+        
         else:
-            guest=Book_event(name=Name,mobile=Mobile,email=Email,venue=Venue,people=People,date=Date,event=Event,food=Foods,address=Address,message=Message)
+            guest=Book_event(name=Name,mobile=Mobile,email=Email,venue=venuepk,people=People,date=Date,event=Event,food=food,address=Address,message=Message)
             guest.user=request.user
             guest.name=request.user
             guest.save()
             messages.info(request, "Your Event is booked successfully! Thank you for booking an event with us!")
             return redirect('/')
-    return render(request,'book.html', context = {'fd':fooddrop})
+    return render(request,'book.html', context = {'fd':fooddrop, "vn": venuedrop})
 
 def about_us(request):
     return render(request, "aboutus.html")

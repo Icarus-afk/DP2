@@ -51,8 +51,13 @@
                     {% endfor %}
                   </select>
                 </div>
-                <div class="form-group">
-                  <input type="text" name="venue" placeholder="Enter the event venue" class="form-control">
+                 <div class="form-group">
+                  <select name="venue" id="dropdownvenue" class="form-control">
+                    <option value="0">--Select venue--</option>
+                    {% for ven in vn %}
+                    <option value="{{ ven.id }}">{{ ven.name }}</option>
+                    {% endfor %}
+                  </select>
                 </div>
 
                 <div class="form-group">
