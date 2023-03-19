@@ -10,6 +10,7 @@ urlpatterns = [
     path("user", views.user_data, name = "userdata"),
     path("about", views.aboutus, name = "about"),
     path("venue", views.venue, name = "venue"),
+    path("foodpackage", views.food, name = "food"),
     path("family", views.family, name = "family"),
     path("charity", views.charity, name = "charity"),
     path("business", views.business, name = "business"),

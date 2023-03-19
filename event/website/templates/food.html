@@ -7,7 +7,7 @@
     <header class="heading-be p-4">
         <div class="container">
             <div class="row">
-                <div class="col-md-12 text-info text-center" ><h1>Venues<hr></h1></div>
+                <div class="col-md-12 text-info text-center" ><h1>FOOD PACKAGES<hr></h1></div>
             </div>
         </div>
     </header>
@@ -17,17 +17,14 @@
             <section class="business-drop">
                 <div class="container">
                     <div class="row">
-                    {% for venue in v %}
+                    {% for food in f %}
                         <div class="col-md-12 p-3">
                             <div class="card-group">
                                 <div class="card p-3 m-3 shadow-lg p-3 mb-5 bg-white rounded">
-                                    <h2 class="card-title">{{venue.name}}</h2>
+                                    <h2 class="card-title">{{food.package}}</h2>
                                     <img src="{{business.image.url}}"  class="card-img-top">
                                     <div class="card-body">
-                                        <p>{{venue.address}}</p>
-                                        <p><h6><u>capcity:</u></h6>{{venue.capacity}}</p>
-                                        <p><h6><u>price</u></h6>{{venue.price}}</p>
-                                        <p><h6><u>Description:</u></h6>{{venue.desc}}</p>
+                                        <p><h6><u>Price(per person):</u></h6>{{food.pack_price}}</p>
                                     </div>
                                 </div>
                             </div>

@@ -1,6 +1,6 @@
 /* -------------home------------ */
 body{
-    background: linear-gradient(0.25turn, #3f87a6, #ebf8e1, #f69d3c);
+    background: linear-gradient(0.25turn, #004968, #7c4000);
     }
 
 #home-body{
@@ -36,7 +36,7 @@ header .nav-link-active a{
     }
 
 #home-button{
-    background-image: linear-gradient(#20002c,#cbb4d4); 
+    background-image:#20002c,; 
     padding:3px;
     border:none;
     border-radius:9px;
@@ -82,16 +82,16 @@ header .nav-link-active a{
     }
 
 #contact-button{
-    background-image: linear-gradient(#24a0ed, #24a0ed);
+    background-image:  #24a0ed;
     padding: 5px 15px;
     border:none;
     border-radius:9px;
-    color:white
+    color:rgb(34, 34, 34)
 }
 
 footer{
-    background-image:linear-gradient(#20002c,#cbb4d4);
-    color:white;
+    background-image:#303030;
+    color:rgb(39, 39, 39);
     padding: 15px;
     }
 
@@ -200,7 +200,7 @@ section .aboutus p{
 }
 
 #login-button{
-    background-image: linear-gradient(#20002c,#cbb4d4);
+    background:rgb(34, 34, 34)
 }
 
 #a-link{
@@ -254,4 +254,4 @@ form button{
     border-radius:10px;
     margin-top:10px;
     background-color:skyblue;
-    }
+}

@@ -5,6 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.models import User, auth
+from django.core.mail import send_mail
+from django.conf import settings
 
 
 def home(request):
@@ -43,8 +45,12 @@ def culture(request):
 
 
 def venue(request):
-    ven = Venue.object.all()
+    ven = Venue.objects.all()
     return render(request, 'venue.html', {'v': ven})
+
+def food(request):
+    food_p = Food.objects.all()
+    return render(request, 'food.html', {'f': food_p})
 
 
 @login_required(login_url='login')

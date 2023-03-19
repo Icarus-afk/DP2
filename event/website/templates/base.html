@@ -18,14 +18,14 @@
 
 <body>
     <header>
-      <div class="head">
+      <div class="head bg-dark">
         <div class="container">
           <div class="row">
             <div class="col-sm-5"></div>
             {% if user.is_authenticated %}
-            <div class="nav-link-active py-2"><a href="user">Hello, {{user.first_name}}</a></div>
+            <div class="nav-link-active py-2 text-black"><a href="user">Hello, {{user.first_name}}</a></div>
             <div class="nav-item">
-                <a class=" text-white nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
+                <a class=" text-black nav-link active" aria-current="page" href="{% url 'logout' %}">Logout</a>
             </div>
     
             {% else %}
@@ -62,6 +62,12 @@
         <li class="nav-item">
           <a class=" text-white nav-link" href="{% url 'about' %}" tabindex="-1" aria-disabled="true">ABOUT US</a>
         </li>
+        <li class="nav-item">
+          <a class=" text-white nav-link" href="{% url 'venue' %}" tabindex="-1" aria-disabled="true">VENUES</a>
+        </li>
+        <li class="nav-item">
+          <a class=" text-white nav-link" href="{% url 'food' %}" tabindex="-1" aria-disabled="true">FOOD PACKAGES</a>
+        </li>
         <li class="  nav-item">
           <a class=" text-white nav-link" href="{% url 'bookevent' %}" tabindex="-1" aria-disabled="true">BOOK EVENT</a>
         </li>
@@ -76,21 +82,7 @@
   {% block content %}
 
   {% endblock content %}
-  <footer>
-  <div class="container" align="center">
-    <div class="row">
-      <div class="col-md-6">
-        <a href="https://www.facebook.com"><i class="fab fa-facebook-square fa-3x" id="font-id"></i></a>
-        <a href="https://www.instagram.com"><i class="fab fa-instagram-square fa-3x" id="font-id"></i></a>
-        <a href="https://www.linkedin.com"><i class="fa-brands fa-linkedin" id="font-id"></i> </a>
-        <a href="https://twitter.com"><i class="fa-brands fa-square-twitter" id="font-id"></i></a>
-      </div>
-      <div class="col-sm-6">
-        <h6>ADDRESS</h6>
-      </div>
-    </div>
-  </div>
-  </footer>
+
 
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
