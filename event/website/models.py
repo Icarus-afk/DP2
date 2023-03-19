@@ -77,6 +77,7 @@ class Venue(models.Model):
     capacity = models.IntegerField()
     desc = models.TextField()
     image = models.ImageField(upload_to = "venue")
+    price = models.IntegerField()
     
     def __str__(self):
         return self.name
@@ -95,6 +96,7 @@ class Book_event(models.Model):
     venue = models.ForeignKey(Venue, on_delete = models.CASCADE, default = " ")
     message = models.TextField()
     user=models.ForeignKey(User, on_delete=models.CASCADE, default='')
+    bill = models.IntegerField()
     
     def __str__(self):
         return self.name

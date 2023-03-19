@@ -64,25 +64,30 @@ def book_event(request):
         venue_temp = request.POST['venue']
         venuepk = Venue.objects.get(pk=venue_temp)
         Message = request.POST['message']
-        cpct = int(venuepk.capacity) 
+        cpct = int(venuepk.capacity)
         input_cpct = int(People)
-        print("cpct")
-        if (( Mobile and Email and Address)==""):
-            messages.info(request,'Warning field required')
+        
+        
+        bill = (int(food.pack_price)*input_cpct+int(venuepk.price))
+        finalbill = bill + bill*0.5
+        if ((Mobile and Email and Address) == ""):
+            messages.info(request, 'Warning field required')
             return redirect('/bookevent')
         elif (input_cpct > cpct):
             messages.info(request, "warning! capcity exceeded!")
             return redirect('/bookevent')
-            
-        
+
         else:
-            guest=Book_event(name=Name,mobile=Mobile,email=Email,venue=venuepk,people=People,date=Date,event=Event,food=food,address=Address,message=Message)
-            guest.user=request.user
-            guest.name=request.user
+            guest = Book_event(name=Name, mobile=Mobile, email=Email, venue=venuepk, people=People,
+                               date=Date, event=Event, food=food, address=Address, message=Message, bill = finalbill)
+            guest.user = request.user
+            guest.name = request.user
             guest.save()
-            messages.info(request, "Your Event is booked successfully! Thank you for booking an event with us!")
+            messages.info(
+                request, "Your Event is booked successfully! Thank you for booking an event with us!")
             return redirect('/')
-    return render(request,'book.html', context = {'fd':fooddrop, "vn": venuedrop})
+    return render(request, 'book.html', context={'fd': fooddrop, "vn": venuedrop})
+
 
 def about_us(request):
     return render(request, "aboutus.html")
@@ -121,15 +126,17 @@ def user_data(request):
     return render(request, "user.html", {'u': data})
 
 # ,, login, password_change, cart, logout
+
+
 def register(request):
-    if request.method=="POST":
-        first_name=request.POST['first_name']
-        last_name=request.POST['last_name']
-        username=request.POST['username']
-        email=request.POST['email']
-        password1=request.POST['password1']
-        password2=request.POST['password2']
-        if password1==password2:
+    if request.method == "POST":
+        first_name = request.POST['first_name']
+        last_name = request.POST['last_name']
+        username = request.POST['username']
+        email = request.POST['email']
+        password1 = request.POST['password1']
+        password2 = request.POST['password2']
+        if password1 == password2:
             if User.objects.filter(username=username).exists():
                 messages.info(request, "Username already exist!")
                 return redirect('/register')
@@ -137,24 +144,26 @@ def register(request):
                 messages.info(request, "Email already exist!")
                 return redirect('/register')
             else:
-                user=User.objects.create_user(first_name=first_name, last_name=last_name, username=username, email=email, password=password1)
+                user = User.objects.create_user(
+                    first_name=first_name, last_name=last_name, username=username, email=email, password=password1)
                 user.save()
-                messages.info(request, 'Your account has been created successfully! Please login')
+                messages.info(
+                    request, 'Your account has been created successfully! Please login')
                 return redirect('/login')
         else:
             messages.info(request, "Password didn't match")
             return redirect('/register')
-        
+
     else:
 
         return render(request, 'register.html')
-    
-    
+
+
 def login(request):
-    if request.method=="POST":
-        username=request.POST['username']
-        password=request.POST['password']
-        user=auth.authenticate(username=username, password=password)
+    if request.method == "POST":
+        username = request.POST['username']
+        password = request.POST['password']
+        user = auth.authenticate(username=username, password=password)
         if user is not None:
             auth.login(request, user)
             return redirect('/')
@@ -163,27 +172,30 @@ def login(request):
             return redirect('/login')
     else:
         return render(request, 'login.html')
-        
-        
+
+
 def change_password(request):
     if request.method == "GET":
-        pc = PasswordChangeForm(user = request.user)
+        pc = PasswordChangeForm(user=request.user)
         return render(request, 'changepassword.html', {'context': pc})
     elif request.method == "POST":
-        aa = PasswordChangeForm(user = request.user,  data = request.POST)
+        aa = PasswordChangeForm(user=request.user,  data=request.POST)
         if aa.is_valid():
             user = aa.save()
             update_session_auth_hash(request, user)
-            messages.info(request, "Password Changed Successfully! Login again")
+            messages.info(
+                request, "Password Changed Successfully! Login again")
             return redirect("/login")
 
-        
+
 def usercart(request):
-    my_cart=Book_event.objects.filter(user=request.user)
-    return render(request,'user_cart.html',{'my_cart':my_cart})
+    my_cart = Book_event.objects.filter(user=request.user)
+    return render(request, 'user_cart.html', {'my_cart': my_cart})
+
 
 def aboutus(request):
     return render(request, "aboutus.html")
+
 
 def logout(request):
     auth.logout(request)
