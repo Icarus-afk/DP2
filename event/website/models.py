@@ -28,7 +28,7 @@ class Charity(models.Model):
     user = models.ForeignKey(User, on_delete = models.CASCADE, default = " ")
 
     def __str__(self):
-        return self.namevent_type
+        return self.event_type
     
     
 #Business
