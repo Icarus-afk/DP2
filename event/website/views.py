@@ -8,7 +8,7 @@ from django.contrib.auth.models import User, auth
 from django.core.mail import send_mail
 from django.conf import settings
 
-
+#GET POST PUT DELETE 
 def home(request):
     if request.method == "POST":
         Name = request.POST["name"]
@@ -128,7 +128,8 @@ def register(request):
 
 
 def user_data(request):
-    data = User.objects.filter(User=request.user)
+    
+    data = User.objects.get(pk = request.user.id)
     return render(request, "user.html", {'u': data})
 
 # ,, login, password_change, cart, logout
