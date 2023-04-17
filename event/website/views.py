@@ -75,7 +75,7 @@ def book_event(request):
         
         
         bill = (int(food.pack_price)*input_cpct+int(venuepk.price))
-        finalbill = bill + bill*0.5
+        finalbill = bill + bill*0.2
         if ((Mobile and Email and Address) == ""):
             messages.info(request, 'Warning field required')
             return redirect('/bookevent')
